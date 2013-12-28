@@ -43,13 +43,13 @@ public class MainActivity extends ActionBarActivity{
 	}
 
 	private ArrayList<NavigationItem> getNavItems() {
-
-
 		ArrayList<NavigationItem> items = new ArrayList<NavigationItem>();
 
 		items.add(new NavigationItem("Quick Connect", R.drawable.ic_action_forward));
 		items.add(new NavigationItem("Hosts", R.drawable.ic_action_add_to_queue));
+		items.add(new NavigationItem("Key Manager", R.drawable.ic_action_accounts));
 		items.add(new NavigationItem("Settings", R.drawable.ic_action_settings));
+		items.add(new NavigationItem("About", R.drawable.ic_action_help));
 
 		return items;
 	}
