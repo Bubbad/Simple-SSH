@@ -2,21 +2,27 @@
     android:id="@+id/hosts_item_layout"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="#2f2f2f"
+    android:background="@color/darkgray"
     android:orientation="vertical" >
 
+    <View
+        android:id="@+id/drawer_parent_divider_top"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentTop="true"
+        android:background="#4c4c4c" />
+    
     <TextView
         android:id="@+id/hosts_item_text"
         android:layout_width="wrap_content"
-        android:layout_height="56dp"
-        android:drawablePadding="4dp"
+        android:layout_height="54dp"
         android:gravity="center_vertical"
         android:paddingLeft="16dp"
-        android:textColor="@color/white"
+        android:textColor="@color/green"
         android:textSize="16sp" />
 
     <View
-        android:id="@+id/drawer_parent_divider"
+        android:id="@+id/drawer_parent_divider_bottom"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"

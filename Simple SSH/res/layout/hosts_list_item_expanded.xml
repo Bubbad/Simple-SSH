@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/hosts_item_layout"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#2f2f2f"
+    android:background="@color/darkgray"
     android:orientation="vertical"
     android:padding="16dp" >
 
@@ -11,48 +11,42 @@
         android:layout_width="fill_parent"
         android:layout_height="25dp"
         android:textColor="@color/green"
-        android:textColorHint="@color/green" />
+        android:textColorHint="@color/green"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/hosts_hostadress_expanded"
         android:layout_width="fill_parent"
         android:layout_height="25dp"
         android:textColor="@color/green"
-        android:textColorHint="@color/green" />
+        android:textColorHint="@color/green"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/hosts_username_expanded"
         android:layout_width="fill_parent"
         android:layout_height="25dp"
         android:textColor="@color/green"
-        android:textColorHint="@color/green" />
+        android:textColorHint="@color/green"
+        android:textSize="16sp" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#2f2f2f"
-        android:orientation="horizontal" >
+        android:background="@color/darkgray"
+        android:orientation="vertical" >
 
         <Button
             android:id="@+id/connect_host_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#2f2f2f"
-            android:hint="@string/connect_host_button_text"
-            android:textColorHint="@color/green"
-            android:textSize="18sp"
-            android:focusable="false"/>
-
-        <Button
-            android:id="@+id/edit_host_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#2f2f2f"
-            android:hint="@string/edit_host_button_text"
-            android:textColorHint="@color/green"
-            android:textSize="18sp" 
+            android:layout_gravity="right"
+            android:background="@color/darkgray"
             android:focusable="false"
-            android:padding="10dp" />
+            android:hint="@string/connect_host_button_text"
+            android:paddingTop="10dp"
+            android:textColorHint="@color/green"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>
