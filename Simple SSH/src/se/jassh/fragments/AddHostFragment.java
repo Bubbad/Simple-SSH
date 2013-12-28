@@ -2,10 +2,10 @@ package se.jassh.fragments;
 
 import java.io.File;
 
-import hosts.HostItem;
-import io.IOHandler;
 import se.jassh.R;
 import se.jassh.SSH.SSHClient;
+import se.jassh.hosts.HostItem;
+import se.jassh.io.IOHandler;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

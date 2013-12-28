@@ -1,6 +1,6 @@
-package io;
+package se.jassh.io;
 
-import hosts.HostItem;
+import se.jassh.hosts.HostItem;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,4 +1,4 @@
-package hosts;
+package se.jassh.hosts;
 
 public class HostItem {
 

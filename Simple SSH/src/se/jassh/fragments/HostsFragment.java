@@ -1,13 +1,13 @@
 package se.jassh.fragments;
 
-import io.IOHandler;
+
 
 import java.util.ArrayList;
 
-import hosts.HostAdapter;
-import hosts.HostItem;
-import hosts.HostsItemClickListener;
 import se.jassh.R;
+import se.jassh.hosts.HostAdapter;
+import se.jassh.hosts.HostItem;
+import se.jassh.io.IOHandler;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;

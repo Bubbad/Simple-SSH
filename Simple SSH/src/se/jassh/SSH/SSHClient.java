@@ -1,9 +1,6 @@
 package se.jassh.SSH;
 
 
-
-import hosts.HostItem;
-
 import java.io.IOException;
 
 import java.io.InputStream;

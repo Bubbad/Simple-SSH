@@ -1,11 +1,10 @@
-package hosts;
+package se.jassh.hosts;
 
 import java.util.ArrayList;
 
 import se.jassh.R;
 import se.jassh.fragments.AddHostFragment;
 import se.jassh.fragments.ConnectFragment;
-import se.jassh.fragments.ShellFragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
