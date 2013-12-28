@@ -5,7 +5,6 @@
     <item
         android:id="@+id/hosts_menu_add"
         android:icon="@drawable/ic_action_add"
-        android:title="@string/hosts_add_title"
-        jassh:showAsAction="always"/>
+        android:title="@string/hosts_add_title"/>
 
 </menu>

@@ -11,7 +11,6 @@
     <!-- activity_main strings -->
     <string name="enter_username_hint">Username</string>
     <string name="enter_password_hint">Password</string>
-    <string name="enter_hostname_hint">Hostname</string>
     <string name="enter_port_hint">Port</string>
     <string name="connect_server_button_text">Connect</string>
     
