@@ -2,6 +2,8 @@ package se.jassh.SSH;
 
 
 
+import hosts.HostItem;
+
 import java.io.IOException;
 
 import java.io.InputStream;
@@ -114,6 +116,25 @@ public class SSHClient{
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static boolean check_connection_input(String username, String password, String hostname, String port)
+	{
+		boolean approved = true;
+
+		try{
+			Integer.parseInt(port);
+		}
+		catch(Exception e)
+		{
+			approved = false;
+		}
+		
+		if(username.trim().length() == 0 || password.trim().length() == 0 || hostname.trim().length() == 0 )
+		{
+			approved = false;
+		}
+		return approved;
 	}
 
 }

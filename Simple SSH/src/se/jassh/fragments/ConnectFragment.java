@@ -1,13 +1,9 @@
 package se.jassh.fragments;
 
-
-
-import hosts.HostItem;
-import io.IOHandler;
 import se.jassh.R;
+import se.jassh.SSH.SSHClient;
 import android.os.Bundle;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
@@ -19,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class QuickConnectFragment extends Fragment{
+public class ConnectFragment extends Fragment{
 
 	private EditText username;
 	private EditText password;
@@ -48,7 +44,11 @@ public class QuickConnectFragment extends Fragment{
 
 			@Override
 			public void onClick(View v) {
-				connect(v);
+				String user = username.getText().toString();
+				String pass = password.getText().toString();
+				String host = hostname.getText().toString();
+				String port2 = port.getText().toString();
+				connect(user,pass,host,port2, activity);
 			}
 		});
 
@@ -62,76 +62,33 @@ public class QuickConnectFragment extends Fragment{
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
-	public void connect(View view)
+	public static void connect(String username, String password, String hostname, String port, ActionBarActivity activity)
 	{
-		
-		String user = username.getText().toString();
-		String pass = password.getText().toString();
-		String host = hostname.getText().toString();
-		String port2 = port.getText().toString();
-
-		/*
-		String user = "pi";
-		String pass = "raspberry";
-		String host = "192.168.1.105";
-		String port2 = "22";*/
-
-
-		
-
-
-		boolean approvedData = checkUserInput(user,pass,host,port2);
+		boolean approvedData = SSHClient.check_connection_input(username,password,hostname,port);
 
 		if(approvedData)
 		{
-			IOHandler.save(new HostItem("this is a name",user,pass,host,Integer.parseInt(port2)), activity.getFilesDir());
 			ShellFragment fragment = new ShellFragment();
 			Bundle bundle = new Bundle();
-			bundle.putString("username", user);
-			bundle.putString("password", pass);
-			bundle.putString("hostname", host);
-			bundle.putString("port", port2);
+			bundle.putString("username", username);
+			bundle.putString("password", password);
+			bundle.putString("hostname", hostname);
+			bundle.putString("port", port);
 			fragment.setArguments(bundle);
 
-
+			
 			FragmentManager fragmentManager = activity.getSupportFragmentManager();
 			fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();	
-
 		}
 		else
 		{
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 			builder.setMessage("Your data seems incorrect. Please correct errors.")
 			.setCancelable(false)
-			.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-
-				}
-			});
+			.setPositiveButton("OK", null);
 			AlertDialog alert = builder.create();
 			alert.show();
 		}
-	}
-
-
-	private boolean checkUserInput(String username, String password, String hostname, String port)
-	{
-		boolean approved = true;
-
-		try{
-			Integer.parseInt(port);
-		}
-		catch(Exception e)
-		{
-			approved = false;
-		}
-
-		if(username.trim().length() == 0 || password.trim().length() == 0 || hostname.trim().length() == 0 )
-		{
-			approved = false;
-		}
-
-		return approved;
 	}
 }
 

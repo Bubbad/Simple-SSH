@@ -32,6 +32,8 @@ public class ShellFragment extends Fragment {
 
 	private View view;
 	private ActionBarActivity activity;
+	
+	private boolean readData;
 
 
 	@Override
@@ -47,6 +49,7 @@ public class ShellFragment extends Fragment {
 		if(sshc != null)
 		{
 			Log.d("CLIENT - ShellFragment.onStop()", "Stopping SSH connection");
+			readData = false;
 			sshc.stop();
 		}
 	}
@@ -118,11 +121,13 @@ public class ShellFragment extends Fragment {
 
 	private void initSSH(String username, String password, String hostname, int port) {
 		try{
+			
+			readData = true;
 			sshc = new SSHClient(username,password,hostname,port);
 			new Thread(){
 				public void run()
 				{
-					while(true)
+					while(readData)
 					{
 						try {
 							Thread.sleep(500);
@@ -161,7 +166,7 @@ public class ShellFragment extends Fragment {
 			.setCancelable(false)
 			.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
-					QuickConnectFragment fragment = new QuickConnectFragment();
+					ConnectFragment fragment = new ConnectFragment();
 					FragmentManager fragmentManager = activity.getSupportFragmentManager();
 					fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();	
 				}

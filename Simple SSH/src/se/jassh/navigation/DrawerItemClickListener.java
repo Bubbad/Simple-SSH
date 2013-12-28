@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import se.jassh.R;
 import se.jassh.fragments.HostsFragment;
-import se.jassh.fragments.QuickConnectFragment;
+import se.jassh.fragments.ConnectFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -40,7 +40,7 @@ public class DrawerItemClickListener implements ListView.OnItemClickListener{
 		switch(position)
 		{
 		case 0: //Quick Connect
-			QuickConnectFragment quickFragment = new QuickConnectFragment();
+			ConnectFragment quickFragment = new ConnectFragment();
 			fragmentManager.beginTransaction().replace(R.id.content_frame, quickFragment).commit();
 			break;
 		case 1: //Hosts

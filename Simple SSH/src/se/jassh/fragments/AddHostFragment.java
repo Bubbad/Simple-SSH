@@ -3,8 +3,8 @@ package se.jassh.fragments;
 import hosts.HostItem;
 import io.IOHandler;
 import se.jassh.R;
+import se.jassh.SSH.SSHClient;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -37,7 +37,7 @@ public class AddHostFragment extends Fragment{
 		view = inflater.inflate(R.layout.fragment_add_host, container, false);
 
 		//Saves input fields
-		hostname = (EditText)view.findViewById(R.id.add_host_enter_hostname_id);
+		hostname = (EditText)view.findViewById(R.id.add_host_enter_servername_id);
 		username = (EditText)view.findViewById(R.id.add_host_enter_username_id);
 		password = (EditText)view.findViewById(R.id.add_host_enter_password_id);
 		hostadress = (EditText)view.findViewById(R.id.add_host_enter_hostadress_id);
@@ -71,7 +71,7 @@ public class AddHostFragment extends Fragment{
 		String host = hostadress.getText().toString();
 		String port2 = port.getText().toString();
 
-		boolean approvedData = checkUserInput(user,pass,host,port2);
+		boolean approvedData = SSHClient.check_connection_input(user,pass,host,port2);
 
 		if(approvedData)
 		{
@@ -86,33 +86,9 @@ public class AddHostFragment extends Fragment{
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 			builder.setMessage("Your data seems incorrect. Please correct errors.")
 			.setCancelable(false)
-			.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-
-				}
-			});
+			.setPositiveButton("OK", null);
 			AlertDialog alert = builder.create();
 			alert.show();
 		}
-	}
-
-
-	private boolean checkUserInput(String username, String password, String hostname, String port)
-	{
-		boolean approved = true;
-
-		try{
-			Integer.parseInt(port);
-		}
-		catch(Exception e)
-		{
-			approved = false;
-		}
-		
-		if(username.trim().length() == 0 || password.trim().length() == 0 || hostname.trim().length() == 0 )
-		{
-			approved = false;
-		}
-		return approved;
 	}
 }

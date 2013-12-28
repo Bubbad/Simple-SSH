@@ -95,8 +95,6 @@ public class HostsFragment extends Fragment{
 		mListView.setOnItemClickListener(new ListView.OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				
-				Log.d("test", "hafsfsa");
 				HostItem host = hosts.get(position);
 				host.setExpanded(!host.isExpanded());
 				
