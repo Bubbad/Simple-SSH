@@ -43,7 +43,7 @@ public class HostsFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		activity = (ActionBarActivity) getActivity();
-
+		activity.getSupportActionBar().setTitle(R.string.title_hosts_fragment);
 
 		view = inflater.inflate(R.layout.fragment_hosts, container, false);
 		mListView = (ListView) view.findViewById(R.id.hosts_list_id);

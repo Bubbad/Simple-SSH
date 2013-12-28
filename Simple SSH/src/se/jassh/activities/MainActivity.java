@@ -25,22 +25,21 @@ public class MainActivity extends ActionBarActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.drawer_layout);
 
-		if(savedInstanceState == null)
-		{
-			//Init the drawer
-			mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-			ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+		//Init the drawer
+		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+		ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
 
-			ArrayList<NavigationItem> items = getNavItems();
-			mDrawerList.setAdapter(new NavigationAdapter(this, R.layout.drawer_list_item, items));
-			mDrawerList.setOnItemClickListener(new DrawerItemClickListener(this, mDrawerLayout, mDrawerList, items));
+		ArrayList<NavigationItem> items = getNavItems();
+		mDrawerList.setAdapter(new NavigationAdapter(this, R.layout.drawer_list_item, items));
+		mDrawerList.setOnItemClickListener(new DrawerItemClickListener(this, mDrawerLayout, mDrawerList, items));
 
-			toggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.abc_ic_go, R.string.abc_action_bar_home_description, R.string.abc_action_bar_home_description);
-			mDrawerLayout.setDrawerListener(toggle);
-			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-			getSupportActionBar().setHomeButtonEnabled(true);
-		}
+		toggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.abc_ic_go, R.string.abc_action_bar_home_description, R.string.abc_action_bar_home_description);
+		mDrawerLayout.setDrawerListener(toggle);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
+
 	}
 
 	private ArrayList<NavigationItem> getNavItems() {

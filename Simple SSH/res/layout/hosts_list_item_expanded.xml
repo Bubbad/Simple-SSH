@@ -31,16 +31,28 @@
         android:textSize="16sp" />
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/darkgray"
-        android:orientation="vertical" >
+        android:orientation="horizontal" 
+        android:layout_gravity="right">
 
+        <Button
+            android:id="@+id/edit_host_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/darkgray"
+            android:focusable="false"
+            android:hint="@string/edit_host_button_text"
+            android:paddingTop="10dp"
+            android:paddingRight="15dp"
+            android:textColorHint="@color/green"
+            android:textSize="18sp" />
+        
         <Button
             android:id="@+id/connect_host_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
             android:background="@color/darkgray"
             android:focusable="false"
             android:hint="@string/connect_host_button_text"

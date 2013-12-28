@@ -28,7 +28,7 @@
         
         <activity
             android:name="se.jassh.activities.ShellFragment"
-            android:label="@string/title_activity_shell">
+            android:label="@string/title_shell_fragment">
             
         </activity>
             

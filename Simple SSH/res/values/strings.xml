@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">Quick connect</string>
-    <string name="title_activity_shell">Shell</string>
+    <string name="title_shell_fragment">Shell</string>
+    <string name="title_connection_fragment">Quick Connect</string>
+    <string name="title_hosts_fragment">Hosts</string>
     <string name="action_settings">Settings</string>
     
     

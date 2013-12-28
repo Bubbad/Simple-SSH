@@ -31,6 +31,7 @@ public class ConnectFragment extends Fragment{
 		super.onCreate(savedInstanceState);
 		setRetainInstance(true);
 		activity = (ActionBarActivity) getActivity();
+		activity.getSupportActionBar().setTitle(R.string.title_connection_fragment);
 		view = inflater.inflate(R.layout.activity_quick_connect, container, false);
 
 		//Saves input fields

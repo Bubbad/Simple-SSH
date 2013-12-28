@@ -10,8 +10,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class Encrypter {
 
 	private static final String algorithm = "AES";
-	private static final byte[] key = new byte[] { 'y', '1', 'e',
-		'*', 'u', 'o', '@', 'B', 'e', 'w', '4', 'a', '9', 'L', 'R', '9' };
+	private static final byte[] key = new byte[] { 'p', 'a', 's', 's', 'w', 'o', 'r', 'd', 'p', 'a', 's', 's', 'w', 'o', 'R', 'd' };
 	
 	public static byte[] generateKey() throws Exception
 	{

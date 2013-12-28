@@ -1,5 +1,7 @@
 package se.jassh.fragments;
 
+import java.io.File;
+
 import hosts.HostItem;
 import io.IOHandler;
 import se.jassh.R;
@@ -18,8 +20,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class AddHostFragment extends Fragment{
-	
-	private EditText hostname;
+
+	private EditText servername;
 	private EditText username;
 	private EditText password;
 	private EditText hostadress;
@@ -27,6 +29,9 @@ public class AddHostFragment extends Fragment{
 
 	private View view;
 	private ActionBarActivity activity;
+
+	private boolean edit = false;
+	private HostItem oldHost;
 
 
 	@Override
@@ -37,11 +42,30 @@ public class AddHostFragment extends Fragment{
 		view = inflater.inflate(R.layout.fragment_add_host, container, false);
 
 		//Saves input fields
-		hostname = (EditText)view.findViewById(R.id.add_host_enter_servername_id);
+		servername = (EditText)view.findViewById(R.id.add_host_enter_servername_id);
 		username = (EditText)view.findViewById(R.id.add_host_enter_username_id);
 		password = (EditText)view.findViewById(R.id.add_host_enter_password_id);
 		hostadress = (EditText)view.findViewById(R.id.add_host_enter_hostadress_id);
 		port = (EditText)view.findViewById(R.id.add_host_enter_port_id);
+
+
+		//Check if we recieved any "starting" values
+		Bundle bundle = this.getArguments();
+		if(bundle != null)
+		{
+			String oldServerName = bundle.getString("servername");
+			String oldUserName = bundle.getString("username");
+			String oldHostAddress = bundle.getString("hostname");
+			String oldPort = bundle.getString("port");
+			
+			
+			servername.setText(oldServerName);
+			username.setText(oldUserName);
+			hostadress.setText(oldHostAddress);
+			port.setText(oldPort);
+			edit = true;
+			oldHost = new HostItem(oldServerName, oldUserName, null, oldHostAddress, Integer.parseInt(oldPort));
+		}
 
 		Button button = (Button)view.findViewById(R.id.add_host_button);
 		button.setOnClickListener(new View.OnClickListener() {
@@ -64,8 +88,7 @@ public class AddHostFragment extends Fragment{
 
 	public void save(View view)
 	{
-		
-		String name = hostname.getText().toString();
+		String name = servername.getText().toString();
 		String user = username.getText().toString();
 		String pass = password.getText().toString();
 		String host = hostadress.getText().toString();
@@ -75,9 +98,15 @@ public class AddHostFragment extends Fragment{
 
 		if(approvedData)
 		{
-			IOHandler.save(new HostItem(name,user,pass,host,Integer.parseInt(port2)), activity.getFilesDir());
-			HostsFragment fragment = new HostsFragment();
+			File filesDir = activity.getFilesDir();
+			if(edit)
+			{
+				IOHandler.remove(filesDir, oldHost);
+			}
 
+			IOHandler.save(new HostItem(name,user,pass,host,Integer.parseInt(port2)), filesDir);
+			
+			HostsFragment fragment = new HostsFragment();
 			FragmentManager fragmentManager = activity.getSupportFragmentManager();
 			fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();	
 		}

@@ -90,6 +90,7 @@ public class ShellFragment extends Fragment {
 		final String hostname = bundle.getString("hostname");
 		final int port = Integer.parseInt(bundle.getString("port"));
 		
+		activity.getSupportActionBar().setTitle(username + "@" + hostname);
 		
 		//Inits SSH thread and connections
 		Log.d("JASSH - ShellFragment.onCreateView()", "Starting SSH");
