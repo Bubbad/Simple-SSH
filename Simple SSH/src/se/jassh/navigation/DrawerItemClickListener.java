@@ -3,8 +3,11 @@ package se.jassh.navigation;
 import java.util.ArrayList;
 
 import se.jassh.R;
+import se.jassh.fragments.AboutFragment;
 import se.jassh.fragments.HostsFragment;
 import se.jassh.fragments.ConnectFragment;
+import se.jassh.fragments.KeyManager;
+import se.jassh.fragments.SettingsFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -47,7 +50,17 @@ public class DrawerItemClickListener implements ListView.OnItemClickListener{
 			HostsFragment hostFragment = new HostsFragment();
 			fragmentManager.beginTransaction().replace(R.id.content_frame, hostFragment).commit();
 			break;
-		case 2: //Settings
+		case 2: //Key Manager
+			KeyManager keyFragment = new KeyManager();
+			fragmentManager.beginTransaction().replace(R.id.content_frame, keyFragment).commit();
+			break;
+		case 3: //Settings
+			SettingsFragment settingsFragment = new SettingsFragment();
+			fragmentManager.beginTransaction().replace(R.id.content_frame, settingsFragment).commit();
+			break;
+		case 4: //About
+			AboutFragment aboutFragment = new AboutFragment();
+			fragmentManager.beginTransaction().replace(R.id.content_frame, aboutFragment).commit();
 			break;
 		}
 		

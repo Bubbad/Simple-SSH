@@ -61,7 +61,7 @@ public class ShellFragment extends Fragment {
 		setRetainInstance(true);
 
 		activity = (ActionBarActivity)getActivity();
-		view = inflater.inflate(R.layout.activity_shell, container, false);
+		view = inflater.inflate(R.layout.fragment_shell, container, false);
 		
 		readText = (TextView)view.findViewById(R.id.read_message_text);
 		sendText = (EditText)view.findViewById(R.id.send_message_text);

@@ -32,7 +32,7 @@ public class ConnectFragment extends Fragment{
 		setRetainInstance(true);
 		activity = (ActionBarActivity) getActivity();
 		activity.getSupportActionBar().setTitle(R.string.title_connection_fragment);
-		view = inflater.inflate(R.layout.activity_quick_connect, container, false);
+		view = inflater.inflate(R.layout.fragment_connection, container, false);
 
 		//Saves input fields
 		username = (EditText)view.findViewById(R.id.enter_username_id);
