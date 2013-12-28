@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Quick connect</string>
+    <string name="title_activity_shell">Shell</string>
+    <string name="action_settings">Settings</string>
+    
+    
+    <!-- activity_main strings -->
+    <string name="enter_username_hint">Username</string>
+    <string name="enter_password_hint">Password</string>
+    <string name="enter_hostname_hint">Hostname</string>
+    <string name="enter_port_hint">Port</string>
+    <string name="connect_server_button_text">Connect</string>
+    
+    <!-- activity_shell strings -->
+    <string name="send_message_hint">Enter command</string>
+    <string name="send_message_button_text">Send</string>
+    <string name="send_ctrlc_button_text">^C</string>
+    
+    <!-- Fragment add_host strings -->
+    <string name="add_host_button_text">Save</string>
+    <string name="connect_host_button_text">Connect</string>
+    <string name="edit_host_button_text">Edit</string>
+    <string name="enter_hostname_hint">Hostname</string>
+    
+    
+    <!-- color scheme strings -->
+    <color name="black">#000000</color>
+    <color name="green">#00FF00</color>
+    <color name="white">#FFFFFF</color>
+
+    
+    <string name="drawer_item_desc">Item</string>
+    
+    <string name="hosts_add_title">Add</string>
+    
+
+</resources>

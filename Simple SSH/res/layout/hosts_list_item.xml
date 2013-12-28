@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/hosts_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="#2f2f2f"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/hosts_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:drawablePadding="4dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/drawer_parent_divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="#4c4c4c" />
+
+</RelativeLayout>
