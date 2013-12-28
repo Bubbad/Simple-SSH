@@ -5,7 +5,6 @@ A simple ssh client for android devices.
 <br />
 <b>To do:</b>
 <ul>
-<li>Add option to edit hosts.</li>
 <li>Add support for keys.</li>
 <li>Create and implement settings.</li>
 <li>Create vt100 emulator. </li>
