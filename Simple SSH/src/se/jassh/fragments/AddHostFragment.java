@@ -5,7 +5,7 @@ import java.io.File;
 import se.jassh.R;
 import se.jassh.SSH.SSHClient;
 import se.jassh.hosts.HostItem;
-import se.jassh.io.IOHandler;
+import se.jassh.io.HostIOHandler;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -101,10 +101,10 @@ public class AddHostFragment extends Fragment{
 			File filesDir = activity.getFilesDir();
 			if(edit)
 			{
-				IOHandler.remove(filesDir, oldHost);
+				HostIOHandler.remove(filesDir, oldHost);
 			}
 
-			IOHandler.save(new HostItem(name,user,pass,host,Integer.parseInt(port2)), filesDir);
+			HostIOHandler.save(new HostItem(name,user,pass,host,Integer.parseInt(port2)), filesDir);
 			
 			HostsFragment fragment = new HostsFragment();
 			FragmentManager fragmentManager = activity.getSupportFragmentManager();

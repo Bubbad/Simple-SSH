@@ -6,6 +6,7 @@
     <string name="title_connection_fragment">Quick Connect</string>
     <string name="title_hosts_fragment">Hosts</string>
     <string name="action_settings">Settings</string>
+    <string name="title_key_manager_fragment">Key Manager</string>
     
     
     <!-- activity_main strings -->

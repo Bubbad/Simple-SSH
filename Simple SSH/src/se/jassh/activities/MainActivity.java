@@ -3,13 +3,16 @@ package se.jassh.activities;
 import java.util.ArrayList;
 
 import se.jassh.R;
+import se.jassh.io.HostIOHandler;
 import se.jassh.navigation.DrawerItemClickListener;
 import se.jassh.navigation.NavigationAdapter;
 import se.jassh.navigation.NavigationItem;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -24,8 +27,7 @@ public class MainActivity extends ActionBarActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.drawer_layout);
-
-
+		
 		//Init the drawer
 		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 		ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);

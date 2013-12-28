@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import se.jassh.R;
 import se.jassh.hosts.HostAdapter;
 import se.jassh.hosts.HostItem;
-import se.jassh.io.IOHandler;
+import se.jassh.io.HostIOHandler;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -50,12 +50,12 @@ public class HostsFragment extends Fragment{
 
 		try 
 		{
-			hosts = IOHandler.load(activity.getFilesDir());
+			hosts = HostIOHandler.load(activity.getFilesDir());
 			initListView();
 		} 
 		catch (Exception e) 
 		{
-			IOHandler.delete(activity.getFilesDir());
+			HostIOHandler.delete(activity.getFilesDir());
 			Log.e("CLIENT - HostsFragment.onCreateView()", e.getMessage());
 		}
 		return view;
@@ -118,7 +118,7 @@ public class HostsFragment extends Fragment{
 				builder.setMessage("Are you sure you want to delete this host?" + "\nName: " + host.getName() + ".\n" + "Adress: " + host.getHostname() + ":" + host.getPort())
 				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
-						IOHandler.remove(activity.getFilesDir(), host);
+						HostIOHandler.remove(activity.getFilesDir(), host);
 						activity.runOnUiThread(new Runnable(){
 							@Override
 							public void run() {

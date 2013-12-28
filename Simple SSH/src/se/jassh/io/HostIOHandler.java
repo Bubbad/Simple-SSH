@@ -8,12 +8,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
+import android.os.Environment;
 import android.util.Log;
 
 
-public class IOHandler {
+public class HostIOHandler {
 
 	public static String filename = "hosts.txt";
 	public static String separator = ",";
@@ -141,5 +143,29 @@ public class IOHandler {
 		{
 			e.printStackTrace();
 		}
+	}
+
+	public static ArrayList<File> search(String filename, File file[])
+	{
+		ArrayList<File> files = new ArrayList<File>();
+		for(File f : file)
+		{
+			if(f.isDirectory())
+			{
+				if(f.listFiles() != null)
+				{
+					files.addAll(search(filename, f.listFiles()));
+				}
+			}
+			else
+			{
+				if(f.getName().contains((filename)))
+				{
+					files.add(f);
+					Log.d("Client - IOHandler.Search()", "Found:" + f.getAbsolutePath());
+				}
+			}
+		}
+		return files;
 	}
 }
