@@ -1,6 +1,7 @@
 package se.jassh.io;
 
 import se.jassh.hosts.HostItem;
+import se.jassh.security.Encrypter;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,7 +12,6 @@ import java.util.Iterator;
 
 import android.util.Log;
 
-import security.Encrypter;
 
 public class IOHandler {
 

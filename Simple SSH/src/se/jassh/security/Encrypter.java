@@ -1,4 +1,4 @@
-package security;
+package se.jassh.security;
 
 import java.security.SecureRandom;
 
