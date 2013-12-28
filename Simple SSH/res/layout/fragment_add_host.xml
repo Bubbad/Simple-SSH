@@ -8,11 +8,11 @@
     tools:context=".QuickConnectActivity" >
 
     <EditText
-        android:id="@+id/add_host_enter_hostname_id"
+        android:id="@+id/add_host_enter_servername_id"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@layout/text_design"
-        android:hint="@string/enter_hostname_hint"
+        android:hint="@string/enter_servername_hint"
         android:minHeight="50dp"
         android:textColor="@color/green"
         android:textColorHint="@color/green" />

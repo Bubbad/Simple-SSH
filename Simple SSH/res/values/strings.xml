@@ -22,13 +22,9 @@
     <string name="add_host_button_text">Save</string>
     <string name="connect_host_button_text">Connect</string>
     <string name="edit_host_button_text">Edit</string>
-    <string name="enter_hostname_hint">Hostname</string>
+    <string name="enter_hostname_hint">Host Address</string>
+    <string name="enter_servername_hint">Servername</string>
     
-    
-    <!-- color scheme strings -->
-    <color name="black">#000000</color>
-    <color name="green">#00FF00</color>
-    <color name="white">#FFFFFF</color>
 
     
     <string name="drawer_item_desc">Item</string>
