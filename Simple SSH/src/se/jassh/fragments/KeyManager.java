@@ -5,6 +5,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import keys.KeyAdapter;
+import keys.KeyItem;
+
 import se.jassh.R;
 import se.jassh.hosts.HostAdapter;
 import se.jassh.hosts.HostItem;
@@ -33,8 +36,8 @@ public class KeyManager extends Fragment{
 	private View view;
 	private ActionBarActivity activity;
 	private ListView mListView;
-	private ArrayAdapter<String> adapter;
-	private ArrayList<String> keys;
+	private KeyAdapter adapter;
+	private ArrayList<KeyItem> keys;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,13 +49,13 @@ public class KeyManager extends Fragment{
 		keys = KeyIOHandler.loadKeyFile(activity.getFilesDir());
 
 		mListView = (ListView) view.findViewById(R.id.key_list_id);
-		adapter = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1 , keys);
+		adapter = new KeyAdapter(activity, R.id.content_frame, keys);
 		mListView.setAdapter(adapter);
 
 		mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-				final String key = keys.get(position);
+				final KeyItem key = keys.get(position);
 
 				AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 				builder.setMessage("Delete reference to key: " + key +  "?")
@@ -134,13 +137,40 @@ public class KeyManager extends Fragment{
 	private void chooseKey(ArrayList<File> files) {
 		AlertDialog.Builder builderSingle = new AlertDialog.Builder(activity);
 
-		final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(activity, android.R.layout.select_dialog_singlechoice);
-		final HashMap<String, String> keys = new HashMap<String, String>();
+		
+		final ArrayList<KeyItem> keys = new ArrayList<KeyItem>();
 
+		for(File file : files){
+			keys.add(new KeyItem(file.getName(), file.getAbsolutePath()));
+		}
+		final KeyAdapter adapter = new KeyAdapter(activity, R.id.content_frame, keys);
+
+		builderSingle.setTitle("Select the correct file")
+		.setNegativeButton("cancel",new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		})
+		.setAdapter(adapter, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				KeyItem key = keys.get(which);
+				KeyIOHandler.saveKeyFile(activity.getFilesDir(), key);
+				KeyManager.this.keys.add(key);
+				adapter.notifyDataSetChanged();
+				Log.d("Client - KeyManager.chooseKey()", "Saved keypath: " + key);
+			}
+		})
+		.show();
+		
+		
+		/*final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(activity, android.R.layout.select_dialog_singlechoice);
+		final ArrayList<KeyItem> keys = new ArrayList<KeyItem>();
 
 		for(File file : files){
 			arrayAdapter.add(file.getName());
-			keys.put(file.getName(), file.getAbsolutePath());
+			keys.add(new KeyItem(file.getName(), file.getAbsolutePath()));
 		}
 
 		builderSingle.setTitle("Select the correct file")
@@ -153,13 +183,13 @@ public class KeyManager extends Fragment{
 		.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				String path = keys.get(arrayAdapter.getItem(which));
-				KeyIOHandler.saveKeyFile(activity.getFilesDir(), path);
-				KeyManager.this.keys.add(path);
+				KeyItem key = keys.get(which);
+				KeyIOHandler.saveKeyFile(activity.getFilesDir(), key);
+				KeyManager.this.keys.add(key);
 				adapter.notifyDataSetChanged();
-				Log.d("Client - KeyManager.chooseKey()", "Saved keypath: " + path);
+				Log.d("Client - KeyManager.chooseKey()", "Saved keypath: " + key);
 			}
 		})
-		.show();
+		.show();*/
 	}
 }
