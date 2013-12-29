@@ -55,11 +55,13 @@ public class HostIOHandler {
 			//Builds new file data
 			for(int i = 0; i< hostList.size() - 1; i++)
 			{
-				builder.append(hostList.get(i).getName() + separator + hostList.get(i).getUsername() + separator + hostList.get(i).getPassword() + separator + hostList.get(i).getHostname() + separator + hostList.get(i).getPort() + breaker);
+				HostItem item = hostList.get(i);
+				builder.append(item.getName() + separator + item.getUsername() + separator + item.getPassword() + separator + item.getHostname() + separator + item.getPort() + separator + item.getKeypath() + breaker);
 				Log.d("CLIENT", "Appending, now string is: " + builder.toString());
 			}
 
-			builder.append(hostList.get(hostList.size()- 1).getName() + separator + hostList.get(hostList.size()- 1).getUsername() + separator + hostList.get(hostList.size()- 1).getPassword() + separator + hostList.get(hostList.size()- 1).getHostname() + separator + hostList.get(hostList.size()- 1).getPort() + breaker);
+			HostItem item = hostList.get(hostList.size() - 1);
+			builder.append(item.getName() + separator + item.getUsername() + separator + item.getPassword() + separator + item.getHostname() + separator + item.getPort() + separator + item.getKeypath() + breaker);
 			Log.d("CLIENT", "Appending, now string is: " + builder.toString());
 			byte[] bytes = Encrypter.encode(builder.toString().getBytes(), true);
 
@@ -97,7 +99,7 @@ public class HostIOHandler {
 			for(String line : lines)
 			{
 				String[] host = line.split(separator);
-				HostItem h = new HostItem(host[0], host[1], host[2], host[3], Integer.parseInt(host[4]));
+				HostItem h = new HostItem(host[0], host[1], host[2], host[3], Integer.parseInt(host[4]), host[5]);
 				hosts.add(h);
 				Log.d("CLIENT - IOHandler.load()", "Loaded host: " + h.getName());
 			}

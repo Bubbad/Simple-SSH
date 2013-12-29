@@ -64,7 +64,7 @@ public class AddHostFragment extends Fragment{
 			hostadress.setText(oldHostAddress);
 			port.setText(oldPort);
 			edit = true;
-			oldHost = new HostItem(oldServerName, oldUserName, null, oldHostAddress, Integer.parseInt(oldPort));
+			oldHost = new HostItem(oldServerName, oldUserName, null, oldHostAddress, Integer.parseInt(oldPort), null); //FIXME
 		}
 
 		Button button = (Button)view.findViewById(R.id.add_host_button);
@@ -104,7 +104,7 @@ public class AddHostFragment extends Fragment{
 				HostIOHandler.remove(filesDir, oldHost);
 			}
 
-			HostIOHandler.save(new HostItem(name,user,pass,host,Integer.parseInt(port2)), filesDir);
+			HostIOHandler.save(new HostItem(name,user,pass,host,Integer.parseInt(port2), null), filesDir); //FIXME
 			
 			HostsFragment fragment = new HostsFragment();
 			FragmentManager fragmentManager = activity.getSupportFragmentManager();

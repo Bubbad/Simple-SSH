@@ -6,6 +6,7 @@ import com.jcraft.jsch.JSchException;
 
 import se.jassh.R;
 import se.jassh.SSH.SSHClient;
+import se.jassh.hosts.HostItem;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -88,13 +89,16 @@ public class ShellFragment extends Fragment {
 		final String username = bundle.getString("username");
 		final String password = bundle.getString("password");
 		final String hostname = bundle.getString("hostname");
+		final String keypath = bundle.getString("keypath");
 		final int port = Integer.parseInt(bundle.getString("port"));
+		
+		final HostItem host = new HostItem(null, username, password, hostname, port, keypath);
 		
 		activity.getSupportActionBar().setTitle(username + "@" + hostname);
 		
 		//Inits SSH thread and connections
 		Log.d("JASSH - ShellFragment.onCreateView()", "Starting SSH");
-		initSSH(username, password, hostname, port);
+		initSSH(host);
 		
 		return view;
 	}
@@ -120,11 +124,10 @@ public class ShellFragment extends Fragment {
 		sshc.sendCommand2();
 	}
 
-	private void initSSH(String username, String password, String hostname, int port) {
+	private void initSSH(HostItem host) {
 		try{
-			
 			readData = true;
-			sshc = new SSHClient(username,password,hostname,port);
+			sshc = new SSHClient(host);
 			new Thread(){
 				public void run()
 				{
@@ -163,7 +166,7 @@ public class ShellFragment extends Fragment {
 			Log.e("TESTING", "Couldn't connect to server. Destroying shell activity");
 
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-			builder.setMessage("Couldn't connect to server. Check input or try again later.")
+			builder.setMessage(e.getMessage())
 			.setCancelable(false)
 			.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {

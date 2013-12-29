@@ -56,7 +56,7 @@ public class HostsFragment extends Fragment{
 		catch (Exception e) 
 		{
 			HostIOHandler.delete(activity.getFilesDir());
-			Log.e("CLIENT - HostsFragment.onCreateView()", e.getMessage());
+			Log.e("CLIENT - HostsFragment.onCreateView()", "Error while loading file, deleting it.");
 		}
 		return view;
 	}

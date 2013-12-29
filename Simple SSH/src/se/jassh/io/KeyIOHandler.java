@@ -2,6 +2,7 @@ package se.jassh.io;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -86,5 +87,25 @@ public class KeyIOHandler {
 		if(file.exists()){
 			file.delete();
 		}
+	}
+
+	public static byte[] readKey(String keypath)
+	{
+		File file = new File(keypath);
+		if(file.exists())
+		{
+			FileInputStream in;
+			try {
+				in = new FileInputStream(file);
+				byte[] bytes = new byte[in.available()];
+				in.read(bytes);
+				in.close();
+
+				return bytes;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 }

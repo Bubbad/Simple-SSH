@@ -6,12 +6,13 @@ public class HostItem {
 	private String username;
 	private String password;
 	private String hostname;
+	private String keypath;
 	private int port;
 	private boolean expanded;
 
 
 
-	public HostItem(String name, String username, String password, String hostname, int port) {
+	public HostItem(String name, String username, String password, String hostname, int port, String keypath) {
 		super();
 		this.name = name;
 		this.username = username;
@@ -19,8 +20,16 @@ public class HostItem {
 		this.hostname = hostname;
 		this.port = port;
 		expanded = false;
+		this.keypath = keypath;
+	}
+	public String getKeypath() {
+		return keypath;
 	}
 
+
+	public void setKeypath(String keypath) {
+		this.keypath = keypath;
+	}
 
 	@Override
 	public int hashCode() {
